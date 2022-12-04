@@ -15,9 +15,9 @@ Note: This project was made for educational purposes.
 **For the Original Version of the Dataset:** https://www.kaggle.com/datasets/andrewmvd/cyberbullying-classification
 
 ## Getting Data
-We use the "cyberbullying_tweets_v2.csv" dataset created by under-sampling the <a href="https://www.kaggle.com/datasets/andrewmvd/cyberbullying-classification">Cyberbullying Classification</a> dataset from Kaggle.
+We use the "cyberbullying_tweets_v2.csv" dataset created by under-sampling the <a href="https://www.kaggle.com/datasets/andrewmvd/cyberbullying-classification">Cyberbullying Classification</a> dataset from Kaggle. Our dataset created for binary classification model to flag potentially harmful tweets(cyberbullying/not_cyberbullying).
 
-![alt text](https://github.com/polaternez/cyberbullying_tweets_proj/blob/master/images/cyberbullying_type_count.png "Cyberbullying Type Counts")
+![alt text](https://github.com/polaternez/cyberbullying_tweets_proj/blob/master/images/cyberbullying_type_counts.jpg "Cyberbullying Type Counts")
 
 ## Data Cleaning
 We create a python script to clear text data, its apply the following operations to the text:
@@ -37,7 +37,7 @@ We try six distinct models and evaluate them using accuracy. Then we get the fol
 
 ![alt text](https://github.com/polaternez/cyberbullying_tweets_proj/blob/master/images/models.png "Model Performances")
 
-Thus, we choose the XGBClassifier model from xgboost, it has the highest accuracy and low training time, then fine-tune model for better performance.
+Finally, we choose the XGBClassifier model from xgboost, it has the highest accuracy and relatively low training time, then we fine-tune the model for better performance.
 
 ## Productionization 
 In this step, I created the UI with the Flask. API endpoint help receives a request tweets and returns the results of the cyberbullying detection.
