@@ -29,7 +29,7 @@ def predict():
     else:
         output = "Error!!"
 
-    return render_template("index.html", prediction_text=output, tweet=new_data)
+    return render_template("index.html", prediction_text=output, tweet=f"<< {new_data} >>")
         
 @app.route("/predict_api", methods=["POST"])
 def predict_api():
