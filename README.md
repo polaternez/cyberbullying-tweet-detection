@@ -33,7 +33,7 @@ We create a python script to clear text data, its apply the following operations
 
 First, we split the data into train and test sets with a test size of 30%. After that, we create transformation pipeline with CountVectorizer and TfidfTransformer for feature extraction from text.
 
-We try six distinct models and evaluate them using accuracy. Then we get the following results:
+We train six different models and evaluate them using cross validation scores. Then we get the following results:
 
 ![alt text](https://github.com/polaternez/cyberbullying_tweets_proj/blob/master/images/models.png "Model Performances")
 
