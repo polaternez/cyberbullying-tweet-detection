@@ -23,9 +23,9 @@ def predict():
     output = ""
 
     if prediction[0]==0:
-        output = "#not_cyberbullying#"
+        output = "#not_cyberbullying"
     elif prediction[0]==1:
-        output = "#cyberbullying#"
+        output = "#cyberbullying"
     else:
         output = "Error!!"
 
