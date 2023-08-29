@@ -1,5 +1,5 @@
 # Cyberbullying Tweet Detector: Project Overview  
-* This tool was created to flag potentially harmful tweets
+This tool was created to flag potentially harmful tweets
 * Take Cyberbullying Classification Dataset from Kaggle then build our train data with under-sampling technique.
 * Cleaning the data
 * Build transformation pipeline
