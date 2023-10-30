@@ -7,6 +7,6 @@ data = {"input": [
     '@slagkick frost for now. still learning how to play. for bgs, seems to work well.',
     'Which will end first: #mkr or Tony Abbott as PM?'
     ]}
-r = requests.post(url, json=data)
 
+r = requests.post(url, json=data)
 print(r.text)

@@ -5,9 +5,11 @@ import numpy as np
 import pandas as pd
 import text_cleaning as tc
 
+# import ML model
+model = pickle.load(open("saved_models/final_model.pkl", "rb"))
 
+# WSGI
 app = Flask(__name__)
-model = pickle.load(open("models/final_model.pkl", "rb"))
 
 @app.route("/")
 def home():
@@ -22,9 +24,9 @@ def predict():
     prediction = model.predict(clean_text)
     output = ""
 
-    if prediction[0]==0:
+    if prediction[0] == 0:
         output = "#not_cyberbullying"
-    elif prediction[0]==1:
+    elif prediction[0] == 1:
         output = "#cyberbullying"
     else:
         output = "Error!!"
@@ -34,7 +36,7 @@ def predict():
 @app.route("/predict_api", methods=["POST"])
 def predict_api():
     '''
-    For direct API calls trought request
+    For direct API calls throught request
     '''
     request_json = request.get_json()
     new_data = request_json["input"]
