@@ -9,10 +9,11 @@ This tool was created to flag potentially harmful tweets
 Note: This project was made for educational purposes.
 
 ## Code and Resources Used 
-**Python Version:** 3.7  
+**Python Version:** 3.10  
 **Packages:** numpy, pandas, nltk, sklearn, xgboost, flask, json, pickle  
-**For Flask API Requirements:**  ```pip install -r requirements.txt```  
-**For the Original Version of the Dataset:** https://www.kaggle.com/datasets/andrewmvd/cyberbullying-classification
+**Flask API Requirements:**  ```pip install -r requirements.txt```  
+**Create Anaconda Environment for Flask API:**  ```conda env create -n <ENVNAME> -f environment.yaml```  
+**Original Version of the Dataset:** https://www.kaggle.com/datasets/andrewmvd/cyberbullying-classification
 
 ## Getting Data
 We use the "cyberbullying_tweets_v2.csv" dataset created by under-sampling the <a href="https://www.kaggle.com/datasets/andrewmvd/cyberbullying-classification">Cyberbullying Classification</a> dataset from Kaggle. Our dataset created for binary classification model to flag potentially harmful tweets(cyberbullying/not_cyberbullying).
