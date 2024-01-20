@@ -10,7 +10,7 @@ Note: This project was made for educational purposes.
 
 ## Code and Resources Used 
 **Python Version:** 3.10  
-**Packages:** numpy, pandas, nltk, sklearn, xgboost, flask, json, pickle  
+**Packages:** numpy, pandas, nltk, scikit-learn, xgboost, flask, json, pickle  
 **Flask API Requirements:**  ```pip install -r requirements.txt```  
 **Create Anaconda Environment for Flask API:**  ```conda env create -n <ENVNAME> -f environment.yaml```  
 **Original Version of the Dataset:** https://www.kaggle.com/datasets/andrewmvd/cyberbullying-classification
