@@ -11,14 +11,15 @@ Note: This project was made for educational purposes.
 ## Code and Resources Used 
 **Python Version:** 3.10  
 **Packages:** numpy, pandas, nltk, scikit-learn, xgboost, flask, json, pickle  
-**Flask API Requirements:**  ```pip install -r requirements.txt```  
-**Create Anaconda Environment for Flask API:**  ```conda env create -n <ENVNAME> -f environment.yaml```  
-**Original Version of the Dataset:** https://www.kaggle.com/datasets/andrewmvd/cyberbullying-classification
+**Original Version of the Dataset:** https://www.kaggle.com/datasets/andrewmvd/cyberbullying-classification  
+**Create Anaconda environment:** 
+- ```conda create -p venv python==3.10 -y```  
+- ```pip install -r requirements.txt```
 
 ## Getting Data
 We use the "cyberbullying_tweets_v2.csv" dataset created by under-sampling the <a href="https://www.kaggle.com/datasets/andrewmvd/cyberbullying-classification">Cyberbullying Classification</a> dataset from Kaggle. Our dataset created for binary classification model to flag potentially harmful tweets(cyberbullying/not_cyberbullying).
 
-![alt text](https://github.com/polaternez/cyberbullying_tweets_proj/blob/master/images/cyberbullying_type_counts.jpg "Cyberbullying Type Counts")
+![alt text](https://github.com/polaternez/cyberbullying-tweet-detection/blob/master/reports/figures/cyberbullying_type_counts.jpg "Cyberbullying Type Counts")
 
 ## Data Cleaning
 We create a python script to clear text data, its apply the following operations to the text:
@@ -36,14 +37,14 @@ First, we split the data into train and test sets with a test size of 30%. After
 
 We train six different models and evaluate them using cross validation scores. Then we get the following results:
 
-![alt text](https://github.com/polaternez/cyberbullying_tweets_proj/blob/master/images/models.png "Model Performances")
+![alt text](https://github.com/polaternez/cyberbullying-tweet-detection/blob/master/reports/figures/models.png "Model Performances")
 
 Finally, we choose the XGBClassifier model from xgboost, it has the highest accuracy and relatively low training time, then we fine-tune the model for better performance.
 
 ## Productionization 
 In this step, I created the UI with the Flask. API endpoint help receives a request tweets and returns the results of the cyberbullying detection.
 
-![alt text](https://github.com/polaternez/cyberbullying_tweets_proj/blob/master/images/flask_api.png "Cyberbullying Tweet Detector API")
+![alt text](https://github.com/polaternez/cyberbullying-tweet-detection/blob/master/reports/figures/flask_api.png "Cyberbullying Tweet Detector API")
 
 
 
