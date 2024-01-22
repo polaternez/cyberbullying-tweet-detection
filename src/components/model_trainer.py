@@ -7,10 +7,7 @@ from xgboost import XGBClassifier
 from sklearn.linear_model import LogisticRegression
 from sklearn.naive_bayes import MultinomialNB
 from sklearn.tree import DecisionTreeClassifier
-from sklearn.ensemble import (
-    RandomForestClassifier,
-    GradientBoostingClassifier,
-)
+from sklearn.ensemble import RandomForestClassifier
 
 from dataclasses import dataclass
 from src.utils.exception import CustomException

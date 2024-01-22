@@ -40,7 +40,6 @@ class DataTransformation:
         """
         try:
             # Load the cleaned data
-            target_column = "is_cyberbullying"
             cleaned_tweets_df = pd.read_csv(cleaned_data_path)
 
             # Drop null rows
@@ -50,7 +49,7 @@ class DataTransformation:
 
             # train-test split
             X = cleaned_tweets_df["cleaned_text"].values.astype("U")    # "U" for Unicode string
-            y = cleaned_tweets_df[target_column].values
+            y = cleaned_tweets_df["is_cyberbullying"].values
             
             X_train, X_test, y_train, y_test = train_test_split(X, y, test_size=0.3, random_state=42)
 
