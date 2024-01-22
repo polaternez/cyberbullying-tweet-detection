@@ -13,18 +13,18 @@ class PredictPipeline:
 
     def predict(self, features):
         try:
+            # Load pre-trained models
             preprocessor_path = Path('artifacts/preprocessing/preprocessor.pkl')
             model_path = Path("artifacts/models/model.pkl")
-
-            print("Before Loading")
 
             preprocessor = load_object(file_path=preprocessor_path)
             model = load_object(file_path=model_path)
 
-            print("After Loading")
-            
-            data_transformed = preprocessor.transform(features)
-            prediction = model.predict(data_transformed)
+            # Data preprocessing
+            transformed_data = preprocessor.transform(features)
+
+            # Predictions
+            prediction = model.predict(transformed_data)
 
             return prediction
         
@@ -34,24 +34,14 @@ class PredictPipeline:
 
 
 class CustomData:
-    def __init__(self, age: int, sex: str, bmi: float,
-                children: int, smoker: str, region: str):
-        self.age = age
-        self.sex = sex
-        self.bmi = bmi
-        self.children = children
-        self.smoker = smoker
-        self.region = region
+    def __init__(self, tweet_text: str):
+        self.tweet_text = tweet_text
+
 
     def get_data_as_dataframe(self):
         try:
             custom_data_input_dict = {
-                'age': [self.age], 
-                'sex': [self.sex], 
-                'bmi': [self.bmi], 
-                'children': [self.children], 
-                'smoker': [self.smoker], 
-                'region': [self.region]
+                'tweet_text': [self.tweet_text]
             }
             
             return pd.DataFrame(custom_data_input_dict)
