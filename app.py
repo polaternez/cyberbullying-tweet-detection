@@ -1,6 +1,7 @@
 import numpy as np
 import pandas as pd
 from flask import Flask, request, render_template
+import json
 
 from src.utils.text_cleaning import clean_text
 from src.pipeline.predict_pipeline import CustomData, PredictPipeline
@@ -45,6 +46,27 @@ def predict():
             output = "Error!!"
 
         return render_template("home.html", prediction_text=output, tweet=f"<< {data.tweet_text} >>")
+    
+
+@app.route("/predict_api", methods=["POST"])
+def predict_api():
+    '''
+    For direct API calls throught request
+    '''
+    request_json = request.get_json()
+    temp_df = pd.DataFrame(request_json)
+
+    # data cleaning
+    cleaned_text = temp_df["input"].apply(clean_text)
+
+    # predictions
+    predict_pipeline = PredictPipeline()
+    predictions = predict_pipeline.predict(cleaned_text)
+
+    output = ["#cyberbullying" if x==1 else "#not_cyberbullying" for x in predictions]
+    
+    response = json.dumps({'response': output})
+    return response, 200
     
 
 if __name__ == "__main__":
