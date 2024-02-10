@@ -1,0 +1,15 @@
+artifacts_root: artifacts
+
+data_ingestion:
+  root_dir: artifacts/data
+  source_file: data/cyberbullying_tweets_v2.csv
+  raw_data_path: artifacts/data/data.csv
+  cleaned_data_path: artifacts/data/cleaned_data.csv
+
+data_transformation:
+  root_dir: artifacts/preprocessing
+  preprocessor_path: artifacts/preprocessing/preprocessor.pkl
+
+model_trainer:
+  root_dir: artifacts/models
+  trained_model_path: artifacts/models/model.pkl

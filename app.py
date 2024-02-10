@@ -3,8 +3,8 @@ import pandas as pd
 from flask import Flask, request, render_template
 import json
 
-from src.utils.text_cleaning import clean_text
-from src.pipeline.predict_pipeline import CustomData, PredictPipeline
+from cbDetection.utils.text_cleaning import clean_text
+from cbDetection.pipeline.predict_pipeline import CustomData, PredictPipeline
 
 
 app = Flask(__name__)
@@ -14,18 +14,15 @@ app = Flask(__name__)
 def index():
     return render_template('index.html') 
 
-
 @app.route('/predict', methods=['GET', 'POST'])
 def predict():
     if request.method == 'GET':
         return render_template('home.html')
-    
     else:
         # Unbox data from request form
         data = CustomData(
             tweet_text=request.form.get('tweet_text')
         )
-
         data_df = data.get_data_as_dataframe()
         
         # data cleaning
@@ -37,17 +34,14 @@ def predict():
 
         # output text
         output = ""
-
         if prediction[0] == 0:
             output = "#not_cyberbullying"
         elif prediction[0] == 1:
             output = "#cyberbullying"
         else:
             output = "Error!!"
-
         return render_template("home.html", prediction_text=output, tweet=f"<< {data.tweet_text} >>")
     
-
 @app.route("/predict_api", methods=["POST"])
 def predict_api():
     '''
@@ -64,7 +58,6 @@ def predict_api():
     predictions = predict_pipeline.predict(cleaned_text)
 
     output = ["#cyberbullying" if x==1 else "#not_cyberbullying" for x in predictions]
-    
     response = json.dumps({'response': output})
     return response, 200
     

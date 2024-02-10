@@ -7,7 +7,7 @@ from sklearn.model_selection import GridSearchCV
 import dill
 import pickle
 
-from src.utils.exception import CustomException
+from cbDetection.utils.exception import CustomException
 
 
 def save_object(file_path, obj):
@@ -17,7 +17,6 @@ def save_object(file_path, obj):
 
         with open(file_path, "wb") as file_obj:
             pickle.dump(obj, file_obj)
-
     except Exception as e:
         raise CustomException(e, sys)
 
@@ -26,7 +25,6 @@ def load_object(file_path):
     try:
         with open(file_path, "rb") as file_obj:
             return pickle.load(file_obj)
-
     except Exception as e:
         raise CustomException(e, sys)
 
@@ -52,10 +50,8 @@ def evaluate_models(models_dict: dict, params_dict: dict, X, y, validation_data:
             # evaluation results
             train_model_score = accuracy_score(y, y_pred_train)
             test_model_score = accuracy_score(validation_data[1], y_pred_test)
-
             report[model_name] = test_model_score
 
         return report
-
     except Exception as e:
         raise CustomException(e, sys)
