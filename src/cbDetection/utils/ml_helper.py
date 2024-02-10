@@ -32,7 +32,6 @@ def load_object(file_path):
 def evaluate_models(models_dict: dict, params_dict: dict, X, y, validation_data: tuple) -> dict:
     try:
         report = {}
-
         for model_name, model in models_dict.items():
             params = params_dict[model_name]
 
