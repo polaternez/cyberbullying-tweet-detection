@@ -1,1 +1,11 @@
-key: val
+xgboost:
+  max_depth: [3, 6, 9]
+
+logistic_regression:
+  solver: [lbfgs, saga]
+ 
+naive_bayes:
+
+decision_tree:
+
+random_forest:

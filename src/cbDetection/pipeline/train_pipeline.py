@@ -14,7 +14,9 @@ def main():
     # Data transformation
     data_transformation_config = config_manager.get_data_transformation_config()
     data_transformation = DataTransformation(data_transformation_config)
-    (X_train, y_train), (X_test, y_test), _ = data_transformation.initiate_data_transformation(cleaned_data_path)
+    (X_train, y_train), (X_test, y_test), _ = data_transformation.initiate_data_transformation(
+        data_ingestion_config.cleaned_data_path
+    )
     
     # Model training
     model_trainer_config = config_manager.get_model_trainer_config()

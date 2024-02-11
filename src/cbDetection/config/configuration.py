@@ -47,11 +47,20 @@ class ConfigurationManager:
     # Model trainer config
     def get_model_trainer_config(self) -> ModelTrainerConfig:
         config = self.config.model_trainer
-        
+        params = self.params
+
+        check_null = lambda x: x if x else dict() 
+
         create_directories([config.root_dir])
         model_trainer_config = ModelTrainerConfig(
             root_dir=Path(config.root_dir),
-            trained_model_path=Path(config.trained_model_path)
+            trained_model_path=Path(config.trained_model_path),
+
+            params_xgboost=check_null(params.xgboost),
+            params_logistic_regression=check_null(params.logistic_regression),
+            params_naive_bayes=check_null(params.naive_bayes),
+            params_decision_tree=check_null(params.decision_tree),
+            params_random_forest=check_null(params.random_forest)
         )
         return model_trainer_config
     

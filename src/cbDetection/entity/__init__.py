@@ -20,3 +20,8 @@ class DataTransformationConfig:
 class ModelTrainerConfig:
     root_dir: Path
     trained_model_path: Path
+    params_xgboost: dict
+    params_logistic_regression: dict
+    params_naive_bayes: dict
+    params_decision_tree: dict
+    params_random_forest: dict

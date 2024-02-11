@@ -29,17 +29,17 @@ class ModelTrainer:
             # Define models and hyperparameters 
             models_dict = {
                 "XGBClassifier": XGBClassifier(random_state=42),
-                "Logistic Regression": LogisticRegression(solver="lbfgs", random_state=42),
+                "Logistic Regression": LogisticRegression(random_state=42),
                 "Naive Bayes": MultinomialNB(),
                 "Decision Tree": DecisionTreeClassifier(random_state=42),
                 "Random Forest": RandomForestClassifier(random_state=42),
             }
             params_dict = {
-                "XGBClassifier": {},
-                "Logistic Regression": {},
-                "Naive Bayes": {},
-                "Decision Tree": {},
-                "Random Forest": {},
+                "XGBClassifier": self.model_trainer_config.params_xgboost,
+                "Logistic Regression": self.model_trainer_config.params_logistic_regression,
+                "Naive Bayes": self.model_trainer_config.params_naive_bayes,
+                "Decision Tree": self.model_trainer_config.params_decision_tree,
+                "Random Forest": self.model_trainer_config.params_random_forest,
             }
 
             logger.info(f"Starting model performance assessment...")
