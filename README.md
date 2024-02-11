@@ -1,10 +1,9 @@
-# Cyberbullying Tweet Detector: Project Overview  
-This tool was created to flag potentially harmful tweets
-* Take Cyberbullying Classification Dataset from Kaggle then build our train data with under-sampling technique.
-* Cleaning the data
-* Build transformation pipeline
-* Train different models and evaluate them using cross validation.
-* Built a client facing API using Flask 
+# Natural Language Processing of Cyberbullying Tweets 
+Cyberbullying is a serious problem that can have detrimental effects on individuals' mental health and well-being. Given the large volume of tweets generated daily, manually identifying cyberbullying is time-consuming and inefficient. This tool has been developed to address this challenge by efficiently flagging potentially harmful tweets, aiming to create a safer online environment for all.
+* Used Kaggle's Cyberbullying Dataset with under-sampling.
+* Cleaned and transformed data for machine learning.
+* Trained various models using cross-validation.
+* Built a user-friendly API with Flask.
 
 Note: This project was made for educational purposes.
 
