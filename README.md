@@ -21,27 +21,29 @@ We use the "cyberbullying_tweets_v2.csv" dataset created by under-sampling the <
 ![alt text](https://github.com/polaternez/cyberbullying-tweet-detection/blob/master/reports/figures/cyberbullying_type_counts.jpg "Cyberbullying Type Counts")
 
 ## Data Cleaning
-We create a python script to clear text data, its apply the following operations to the text:
-* Removing Puncuatations
-* Removing Numbers
-* Lowecasing the data
-* Remove stop words
-* Lemmatize/ Stem words
-* Remove URLs
+We use a Python script to clean text data, applying the following operations:
 
+* Removing Punctuations
+* Removing Numbers
+* Lowercasing the data
+* Removing stop words
+* Lemmatizing/Stemming words
+* Removing URLs
+  
 
 ## Model Building 
+1. **Split data:** We split the data into train and test sets with a 30% test size.
+2. **Feature extraction:** We create a transformation pipeline with CountVectorizer and TfidfTransformer.
+3. **Model training and evaluation:** We train six models using cross-validation and choose the XGBClassifier model based on accuracy and training time.
+4. **Fine-tuning:** We fine-tune the XGBClassifier model for better performance.
 
-First, we split the data into train and test sets with a test size of 30%. After that, we create transformation pipeline with CountVectorizer and TfidfTransformer for feature extraction from text.
-
-We train six different models and evaluate them using cross validation scores. Then we get the following results:
+After cross-validation, we obtain the following model performances:
 
 ![alt text](https://github.com/polaternez/cyberbullying-tweet-detection/blob/master/reports/figures/models.png "Model Performances")
 
-Finally, we choose the XGBClassifier model from xgboost, it has the highest accuracy and relatively low training time, then we fine-tune the model for better performance.
 
 ## Productionization 
-In this step, I created the UI with the Flask. API endpoint help receives a request tweets and returns the results of the cyberbullying detection.
+We create a user interface with Flask and an API endpoint that receives tweet requests and returns cyberbullying detection results.
 
 ![alt text](https://github.com/polaternez/cyberbullying-tweet-detection/blob/master/reports/figures/flask_api.png "Cyberbullying Tweet Detector API")
 
