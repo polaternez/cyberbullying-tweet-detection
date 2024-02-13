@@ -5,7 +5,6 @@ Cyberbullying is a serious problem that can have detrimental effects on individu
 * Trained various models using cross-validation.
 * Built a user-friendly API with Flask.
 
-Note: This project was made for educational purposes.
 
 ## Code and Resources Used 
 **Python Version:** 3.10  
