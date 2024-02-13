@@ -7,43 +7,43 @@ Cyberbullying is a serious problem that can have detrimental effects on individu
 - Built a user-friendly API with Flask.
 
 
-## Code and Resources Used 
+## Code and Resources
 **Python Version:** 3.10  
 **Packages:** numpy, pandas, nltk, scikit-learn, xgboost, flask, json, pickle  
-**Original Version of the Dataset:** https://www.kaggle.com/datasets/andrewmvd/cyberbullying-classification  
-**Create Anaconda environment:** 
+**Original Dataset:** https://www.kaggle.com/datasets/andrewmvd/cyberbullying-classification  
+**Setting Up Environment:** 
 - ```conda create -p venv python=3.10 -y```  
 - ```pip install -r requirements.txt```
 
 ## Getting Data
-We use the "cyberbullying_tweets_v2.csv" dataset created by under-sampling the <a href="https://www.kaggle.com/datasets/andrewmvd/cyberbullying-classification">Cyberbullying Classification</a> dataset from Kaggle. Our dataset created for binary classification model to flag potentially harmful tweets(cyberbullying/not_cyberbullying).
+The dataset utilized, "cyberbullying_tweets_v2.csv," is crafted through under-sampling of the <a href="https://www.kaggle.com/datasets/andrewmvd/cyberbullying-classification">Cyberbullying Classification Dataset</a> from Kaggle. This dataset is tailored for binary classification, distinguishing potentially harmful tweets from non-cyberbullying ones.
 
 ![alt text](https://github.com/polaternez/cyberbullying-tweet-detection/blob/master/reports/figures/cyberbullying_type_counts.jpg "Cyberbullying Type Counts")
 
 ## Data Cleaning
-We use a Python script to clean text data, applying the following operations:
+A Python script is employed for comprehensive text data cleaning, encompassing operations such as:
 
-* Removing Punctuations
-* Removing Numbers
-* Lowercasing the data
-* Removing stop words
-* Lemmatizing/Stemming words
-* Removing URLs
-  
+- Punctuation removal
+- Numeric character removal
+- Lowercasing
+- Stop word elimination
+- Lemmatization/Stemming
+- URL removal
+
 
 ## Model Building 
-1. **Split data:** We split the data into train and test sets with a 30% test size.
-2. **Feature extraction:** We create a transformation pipeline with CountVectorizer and TfidfTransformer.
-3. **Model training and evaluation:** We train six models using cross-validation and choose the XGBClassifier model based on accuracy and training time.
-4. **Fine-tuning:** We fine-tune the XGBClassifier model for better performance.
+1. **Data Splitting:** Segregation of data into training and testing sets with a 70-30 ratio.
+2. **Feature Engineering:** Utilization of a transformation pipeline integrating CountVectorizer and TfidfTransformer.
+3. **Model Training and Evaluation:** Training multiple models via cross-validation, with selection based on accuracy and training efficiency. The XGBClassifier model is chosen for its superior performance.
+4. **Fine-tuning:** Refinement of the XGBClassifier model for optimal performance.
 
-After cross-validation, we obtain the following model performances:
+After cross-validation, the models show the following performances:
 
 ![alt text](https://github.com/polaternez/cyberbullying-tweet-detection/blob/master/reports/figures/models.png "Model Performances")
 
 
 ## Productionization 
-We create a user interface with Flask and an API endpoint that receives tweet requests and returns cyberbullying detection results.
+The project culminates in the development of a user interface facilitated by Flask, along with an API endpoint for real-time cyberbullying detection.
 
 ![alt text](https://github.com/polaternez/cyberbullying-tweet-detection/blob/master/reports/figures/flask_api.png "Cyberbullying Tweet Detector API")
 
