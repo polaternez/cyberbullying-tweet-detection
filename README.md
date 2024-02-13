@@ -1,9 +1,10 @@
 # Natural Language Processing of Cyberbullying Tweets 
 Cyberbullying is a serious problem that can have detrimental effects on individuals' mental health and well-being. Given the large volume of tweets generated daily, manually identifying cyberbullying is time-consuming and inefficient. This tool has been developed to address this challenge by efficiently flagging potentially harmful tweets, aiming to create a safer online environment for all.
-* Used Kaggle's Cyberbullying Dataset with under-sampling.
-* Cleaned and transformed data for machine learning.
-* Trained various models using cross-validation.
-* Built a user-friendly API with Flask.
+
+- Used Kaggle's Cyberbullying Dataset with under-sampling.
+- Cleaned and transformed data for machine learning.
+- Trained various models using cross-validation.
+- Built a user-friendly API with Flask.
 
 
 ## Code and Resources Used 
@@ -11,7 +12,7 @@ Cyberbullying is a serious problem that can have detrimental effects on individu
 **Packages:** numpy, pandas, nltk, scikit-learn, xgboost, flask, json, pickle  
 **Original Version of the Dataset:** https://www.kaggle.com/datasets/andrewmvd/cyberbullying-classification  
 **Create Anaconda environment:** 
-- ```conda create -p venv python==3.10 -y```  
+- ```conda create -p venv python=3.10 -y```  
 - ```pip install -r requirements.txt```
 
 ## Getting Data
