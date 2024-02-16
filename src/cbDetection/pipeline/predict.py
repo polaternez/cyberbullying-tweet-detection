@@ -15,9 +15,9 @@ class PredictPipeline:
         try:
             # Load pre-trained models
             preprocessor_path = Path('artifacts/data_transformation/preprocessor.pkl')
-            model_path = Path("artifacts/model_trainer/model.pkl")
-
             preprocessor = load_object(file_path=preprocessor_path)
+
+            model_path = Path("artifacts/model_trainer/model.pkl")
             model = load_object(file_path=model_path)
 
             # Data preprocessing
