@@ -1,10 +1,10 @@
+from flask import Flask, request, render_template
 import numpy as np
 import pandas as pd
-from flask import Flask, request, render_template
 import json
 
 from cbDetection.utils.text_cleaning import clean_text
-from cbDetection.pipeline.predict_pipeline import CustomData, PredictPipeline
+from cbDetection.pipeline.predict import CustomData, PredictPipeline
 
 
 app = Flask(__name__)

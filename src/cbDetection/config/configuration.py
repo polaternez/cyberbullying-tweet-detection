@@ -5,6 +5,7 @@ from cbDetection.constants import *
 from cbDetection.utils.common import read_yaml, create_directories
 from cbDetection.entity import (
     DataIngestionConfig,
+    DataCleaningConfig,
     DataTransformationConfig,
     ModelTrainerConfig
 )
@@ -27,11 +28,22 @@ class ConfigurationManager:
         create_directories([config.root_dir])
         data_ingestion_config = DataIngestionConfig(
             root_dir=config.root_dir,
-            source_file=config.source_file,
-            raw_data_path=config.raw_data_path,
-            cleaned_data_path=config.cleaned_data_path
+            source_URL=config.source_URL,
+            local_data_file=config.local_data_file,
+            unzip_dir=config.unzip_dir 
         )
         return data_ingestion_config
+    
+    # Data cleaning config
+    def get_data_cleaning_config(self) -> DataCleaningConfig:
+        config = self.config.data_cleaning
+        
+        create_directories([config.root_dir])
+        data_cleaning_config = DataCleaningConfig(
+            root_dir=Path(config.root_dir),
+            data_path=Path(config.data_path),
+        )
+        return data_cleaning_config
     
     # Data transformation config
     def get_data_transformation_config(self) -> DataTransformationConfig:
@@ -40,7 +52,8 @@ class ConfigurationManager:
         create_directories([config.root_dir])
         data_transformation_config = DataTransformationConfig(
             root_dir=Path(config.root_dir),
-            preprocessor_path=Path(config.preprocessor_path)
+            cleaned_data_path=Path(config.cleaned_data_path),
+            preprocessor_name=config.preprocessor_name
         )
         return data_transformation_config
     
@@ -54,7 +67,7 @@ class ConfigurationManager:
         create_directories([config.root_dir])
         model_trainer_config = ModelTrainerConfig(
             root_dir=Path(config.root_dir),
-            trained_model_path=Path(config.trained_model_path),
+            model_name=config.model_name,
 
             params_xgboost=check_null(params.xgboost),
             params_logistic_regression=check_null(params.logistic_regression),

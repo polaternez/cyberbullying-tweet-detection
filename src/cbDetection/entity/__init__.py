@@ -2,24 +2,31 @@ from pathlib import Path
 from dataclasses import dataclass
 
 
-@dataclass
+@dataclass(frozen=True)
 class DataIngestionConfig:
     root_dir: Path
-    source_file: Path
-    raw_data_path: Path
-    cleaned_data_path: Path
+    source_URL: Path
+    local_data_file: Path
+    unzip_dir: Path 
 
 
-@dataclass
+@dataclass(frozen=True)
+class DataCleaningConfig:
+    root_dir: Path
+    data_path: Path
+    
+
+@dataclass(frozen=True)
 class DataTransformationConfig:
     root_dir: Path
-    preprocessor_path: Path
+    cleaned_data_path: Path
+    preprocessor_name: str
 
 
-@dataclass
+@dataclass(frozen=True)
 class ModelTrainerConfig:
     root_dir: Path
-    trained_model_path: Path
+    model_name: str
     params_xgboost: dict
     params_logistic_regression: dict
     params_naive_bayes: dict

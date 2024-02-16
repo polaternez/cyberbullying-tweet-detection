@@ -17,11 +17,11 @@ from cbDetection.utils.ml_helper import save_object, evaluate_models
 
 class ModelTrainer:
     def __init__(self, config: ModelTrainerConfig):
-        self.model_trainer_config = config
+        self.config = config
     
     def initiate_model_trainer(self, train_data: tuple, validation_data: tuple):
+        logger.info("Starting model evaluation")
         try:
-            logger.info("Launching the model trainer...")
             # Unbox the training and testing data
             X_train, y_train = train_data[0], train_data[1]
             X_test, y_test = validation_data[0], validation_data[1] 
@@ -35,11 +35,11 @@ class ModelTrainer:
                 "Random Forest": RandomForestClassifier(random_state=42),
             }
             params_dict = {
-                "XGBClassifier": self.model_trainer_config.params_xgboost,
-                "Logistic Regression": self.model_trainer_config.params_logistic_regression,
-                "Naive Bayes": self.model_trainer_config.params_naive_bayes,
-                "Decision Tree": self.model_trainer_config.params_decision_tree,
-                "Random Forest": self.model_trainer_config.params_random_forest,
+                "XGBClassifier": self.config.params_xgboost,
+                "Logistic Regression": self.config.params_logistic_regression,
+                "Naive Bayes": self.config.params_naive_bayes,
+                "Decision Tree": self.config.params_decision_tree,
+                "Random Forest": self.config.params_random_forest,
             }
 
             logger.info(f"Starting model performance assessment...")
@@ -52,23 +52,22 @@ class ModelTrainer:
                 print("[{}] - Accuracy: {:.4f}".format(model, score))
             
             ## To get best model name from dict
-            best_model_name = sorted(model_report, key=lambda k: model_report[k], reverse=True)[0]
-            best_model_score = model_report[best_model_name]
+            best_model_name, best_model_score = max(model_report.items(), key=lambda x: x[1])
+            logger.info(f"Best model: {best_model_name} with score: {best_model_score:.4f}")
 
             # the best model
             best_model = models_dict[best_model_name]
 
             if best_model_score < 0.6:
-                raise CustomException("No model achieved satisfactory performance.")
-            logger.info(f"The best model found on both the training and testing dataset")
-
+                raise CustomException("There is no model that achieves satisfactory performance.")
+            
             # Save the best model
             save_object(
-                file_path=self.model_trainer_config.trained_model_path,
+                file_path=os.path.join(self.config.root_dir, self.config.model_name),
                 obj=best_model
             )
-            logger.info("Model saved")
-
+            logger.info(f"Best model saved to {self.config.model_name}")
+            
             predicted = best_model.predict(X_test)
             acc_score = accuracy_score(y_test, predicted)
             return acc_score

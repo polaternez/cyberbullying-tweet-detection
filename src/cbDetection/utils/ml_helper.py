@@ -1,5 +1,6 @@
 import os
 import sys
+import time
 import numpy as np 
 import pandas as pd
 from sklearn.metrics import accuracy_score
@@ -7,6 +8,7 @@ from sklearn.model_selection import GridSearchCV
 import dill
 import pickle
 
+from cbDetection import logger
 from cbDetection.utils.exception import CustomException
 
 
@@ -33,6 +35,8 @@ def evaluate_models(models_dict: dict, params_dict: dict, X, y, validation_data:
     try:
         report = {}
         for model_name, model in models_dict.items():
+            logger.info(f"Evaluating {model_name}")
+            evaluation_time = time.time()
             params = params_dict[model_name]
 
             grid_search = GridSearchCV(model, params, cv=3)
@@ -50,7 +54,8 @@ def evaluate_models(models_dict: dict, params_dict: dict, X, y, validation_data:
             train_model_score = accuracy_score(y, y_pred_train)
             test_model_score = accuracy_score(validation_data[1], y_pred_test)
             report[model_name] = test_model_score
-
+            evaluation_time = time.time() - evaluation_time
+            logger.info(f"{model_name} evaluation time: {evaluation_time:.2f}s")
         return report
     except Exception as e:
         raise CustomException(e, sys)
