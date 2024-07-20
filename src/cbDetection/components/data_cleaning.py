@@ -17,18 +17,26 @@ class DataCleaning:
     def initiate_data_cleaning(self):
         logger.info("Starting data cleaning process")
         try:
+            # Load dataset
             dataset = pd.read_csv(self.config.data_path)
             logger.info(f"Loaded dataset from {self.config.data_path}")
 
+            # Sampling the dataset
+            not_cyberbullying = dataset[dataset['cyberbullying_type']=="not_cyberbullying"]
+            cyberbullying = dataset[dataset['cyberbullying_type']!="not_cyberbullying"]
+            cyberbullying_sampled = cyberbullying.sample(len(not_cyberbullying))
+
+            new_dataset = pd.concat([not_cyberbullying, cyberbullying_sampled], axis=0)
+            new_dataset = new_dataset.sample(frac=1).reset_index(drop=True) # shuffle dataset
+
             # Add 'is_cyberbullying' column
-            dataset["is_cyberbullying"] = [
-                0 if x=="not_cyberbullying" else 1 for x in dataset["cyberbullying_type"]
-            ]
+            new_dataset["is_cyberbullying"] = [0 if x=="not_cyberbullying" else 1 
+                                               for x in new_dataset["cyberbullying_type"]]
             # Clean tweet text
-            dataset["cleaned_text"] = dataset["tweet_text"].apply(clean_text)
+            new_dataset["cleaned_text"] = new_dataset["tweet_text"].apply(clean_text)
             logger.info("Cleaned tweet text using clean_text function")
 
-            cleaned_df = dataset[['cleaned_text', 'is_cyberbullying']]
+            cleaned_df = new_dataset[['cleaned_text', 'is_cyberbullying']]
 
             # Drop null rows
             dropped_rows = cleaned_df.dropna().shape[0] - cleaned_df.shape[0]
