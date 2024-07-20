@@ -16,7 +16,7 @@ Cyberbullying is a serious problem that can have detrimental effects on individu
 - ```pip install -r requirements.txt```
 
 ## Getting Data
-The dataset utilized, "cyberbullying_tweets_v2.csv," is crafted through under-sampling of the <a href="https://www.kaggle.com/datasets/andrewmvd/cyberbullying-classification">Cyberbullying Classification Dataset</a> from Kaggle. This dataset is tailored for binary classification, distinguishing potentially harmful tweets from non-cyberbullying ones.
+The dataset utilized, <a href="https://www.kaggle.com/datasets/andrewmvd/cyberbullying-classification">Cyberbullying Classification Dataset</a> from Kaggle. This dataset is tailored for binary classification, distinguishing potentially harmful tweets from non-cyberbullying ones.
 
 ![alt text](https://github.com/polaternez/cyberbullying-tweet-detection/blob/master/reports/figures/cyberbullying_type_counts.jpg "Cyberbullying Type Counts")
 
